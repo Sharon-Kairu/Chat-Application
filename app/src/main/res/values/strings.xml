@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Chat Application</string>
+    <string name="new_chat">new_chat</string>
+    <string name="add_new_contact">add_new_contact</string>
 </resources>
