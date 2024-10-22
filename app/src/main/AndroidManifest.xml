@@ -13,6 +13,12 @@
         android:theme="@style/Theme.ChatApplication"
         tools:targetApi="31">
         <activity
+            android:name=".NewChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewContactActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

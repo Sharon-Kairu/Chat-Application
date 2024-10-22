@@ -33,16 +33,26 @@ android {
 }
 
 dependencies {
-
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.firebase.auth)
-    implementation("com.google.firebase:firebase-auth:21.5.0")
-    implementation("com.firebaseui:firebase-ui-auth:8.0.2")
+    implementation(libs.firebase.auth.v2150)
+    implementation(libs.firebase.ui.auth)
+    implementation(libs.firebase.firestore)
+
+    // Added RecyclerView
+    implementation(libs.recyclerview)
+
+    // Added Glide for image loading
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
+
+    // Added CircleImageView for round profile pictures
+    implementation(libs.circleimageview)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-
 }
