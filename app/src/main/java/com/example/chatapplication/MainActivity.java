@@ -17,7 +17,7 @@ import com.firebase.ui.auth.AuthUI;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Contacts.OnContactClickListener{
 
     private static final int SIGN_IN_REQUEST_CODE = 1001;
     private RecyclerView recyclerViewContacts;
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewContacts = findViewById(R.id.recyclerViewContacts);
         recyclerViewContacts.setLayoutManager(new LinearLayoutManager(this));
         contactsList = new ArrayList<>();
-        contactsAdapter = new Contacts((Contacts.OnContactClickListener) contactsList);
+        contactsAdapter = new Contacts(this);
         recyclerViewContacts.setAdapter(contactsAdapter);
 
         // Initialize FABs
@@ -117,6 +117,12 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "Adding new contact", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, NewContactActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onContactClick(ContactsAdapter contact) {
+        // Handle the contact click here
+        Toast.makeText(this, "Clicked on: " + contact.getUsername(), Toast.LENGTH_SHORT).show();
     }
 
 }
