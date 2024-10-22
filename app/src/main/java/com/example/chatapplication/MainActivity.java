@@ -1,8 +1,11 @@
 package com.example.chatapplication;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +20,7 @@ import com.firebase.ui.auth.AuthUI;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements Contacts.OnContactClickListener{
+public class MainActivity extends AppCompatActivity implements Contacts.OnContactClickListener {
 
     private static final int SIGN_IN_REQUEST_CODE = 1001;
     private RecyclerView recyclerViewContacts;
@@ -96,12 +99,12 @@ public class MainActivity extends AppCompatActivity implements Contacts.OnContac
                 .addOnFailureListener(e -> Toast.makeText(MainActivity.this, "Error saving user data", Toast.LENGTH_SHORT).show());
     }
 
-    private void loadContacts() {
+     private void loadContacts() {
         // TODO: Implement contact loading from Firestore
         // This is a placeholder. You should replace this with actual Firestore queries.
         contactsList.clear();
         contactsList.add(new ContactsAdapter("1", "john@example.com"));
-        contactsList.add(new ContactsAdapter("2", "jane@example.com"));
+        contactsList.add(new ContactsAdapter("2", "davidgatwal7@gmail.com"));
         contactsAdapter.notifyDataSetChanged();
     }
 
@@ -125,4 +128,61 @@ public class MainActivity extends AppCompatActivity implements Contacts.OnContac
         Toast.makeText(this, "Clicked on: " + contact.getUsername(), Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_sign_out) {
+            signOut();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void signOut() {
+        new AlertDialog.Builder(this)
+                .setTitle("Sign Out")
+                .setMessage("Are you sure you want to sign out?")
+                .setPositiveButton("Yes", (dialog, which) -> {
+                    // Sign out from Firebase Auth
+                    AuthUI.getInstance()
+                            .signOut(this)
+                            .addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    // Clear any saved user data
+                                    clearUserData();
+
+                                    // Restart sign in flow
+                                    startActivityForResult(
+                                            AuthUI.getInstance()
+                                                    .createSignInIntentBuilder()
+                                                    .build(),
+                                            SIGN_IN_REQUEST_CODE
+                                    );
+                                } else {
+                                    Toast.makeText(MainActivity.this,
+                                            "Sign out failed. Please try again.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
+
+    private void clearUserData() {
+        // Clear any cached data
+        contactsList.clear();
+        contactsAdapter.notifyDataSetChanged();
+
+        // Clear shared preferences if you're using them
+        getSharedPreferences("ChatAppPrefs", MODE_PRIVATE)
+                .edit()
+                .clear()
+                .apply();
+    }
 }
