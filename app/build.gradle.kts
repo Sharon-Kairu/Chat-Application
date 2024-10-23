@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.swiperefreshlayout)
     implementation(libs.firebase.storage)
+    implementation(libs.firebase.analytics)
     annotationProcessor(libs.compiler)
 
     // Added CircleImageView for round profile pictures
