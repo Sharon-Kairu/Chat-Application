@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "832564023537",
+    "firebase_url": "https://chat-application-415a0-default-rtdb.firebaseio.com",
     "project_id": "chat-application-415a0",
     "storage_bucket": "chat-application-415a0.appspot.com"
   },
@@ -12,7 +13,12 @@
           "package_name": "com.example.chatapplication"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "832564023537-0h17mlp0qmpot9op44jjdtq605alf7nm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCLzhtNOYBt7UwXLAvEAKAOpd28j5_SKGg"
@@ -20,7 +26,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "832564023537-0h17mlp0qmpot9op44jjdtq605alf7nm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
