@@ -16,6 +16,7 @@ roomCompilerProcessingTesting = "2.6.1"
 firebaseAuth = "23.0.0"
 googleGmsGoogleServices = "4.4.2"
 firebaseFirestore = "25.1.0"
+swiperefreshlayout = "1.1.0"
 
 [libraries]
 circleimageview = { module = "de.hdodenhof:circleimageview", version.ref = "circleimageview" }
@@ -34,6 +35,7 @@ recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "r
 room-compiler-processing-testing = { group = "androidx.room", name = "room-compiler-processing-testing", version.ref = "roomCompilerProcessingTesting" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
+swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

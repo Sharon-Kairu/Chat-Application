@@ -47,6 +47,7 @@ dependencies {
 
     // Added Glide for image loading
     implementation(libs.glide)
+    implementation(libs.swiperefreshlayout)
     annotationProcessor(libs.compiler)
 
     // Added CircleImageView for round profile pictures
