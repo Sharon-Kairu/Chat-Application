@@ -1,6 +1,7 @@
 package com.example.chatapplication;
 
 import android.net.Uri;
+import com.google.firebase.firestore.Exclude;
 import java.util.Date;
 
 public class ContactsAdapter {
@@ -10,9 +11,14 @@ public class ContactsAdapter {
     private int totalChatCount;
     private Date lastMessageTime;
     private int unreadMessageCount;
-    private Uri profileImageUri;
+    private String profileImageUri;  // Changed from Uri to String
 
-    // Constructor
+    // Required no-argument constructor for Firebase
+    public ContactsAdapter() {
+        // Empty constructor required for Firebase
+    }
+
+    // Existing constructor
     public ContactsAdapter(String userId, String email) {
         this.userId = userId;
         this.email = email;
@@ -23,8 +29,16 @@ public class ContactsAdapter {
         return userId;
     }
 
+    public void setUserId(String userId) {  // Added setter for userId
+        this.userId = userId;
+    }
+
     public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {  // Added setter for email
+        this.email = email;
     }
 
     public String getUsername() {
@@ -59,11 +73,24 @@ public class ContactsAdapter {
         this.unreadMessageCount = unreadMessageCount;
     }
 
-    public Uri getProfileImageUri() {
+    public String getProfileImageUri() {
         return profileImageUri;
     }
 
-    public void setProfileImageUri(Uri profileImageUri) {
+    public void setProfileImageUri(String profileImageUri) {
         this.profileImageUri = profileImageUri;
     }
+
+    // Helper methods for Uri conversion
+    @Exclude
+    public Uri getProfileImageUriObject() {
+        return profileImageUri != null ? Uri.parse(profileImageUri) : null;
+    }
+
+    @Exclude
+    public void setProfileImageUriObject(Uri uri) {
+        this.profileImageUri = uri != null ? uri.toString() : null;
+    }
+
+
 }

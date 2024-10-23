@@ -49,7 +49,7 @@ public class Contacts extends RecyclerView.Adapter<Contacts.ContactViewHolder> {
     public class ContactViewHolder extends RecyclerView.ViewHolder {
         private final CircleImageView imageViewAvatar;
         private final TextView textViewName;
-        private final TextView textViewChatCount;
+        //private final TextView textViewChatCount;
         private final TextView textViewTime;
         private final TextView textViewUnreadCount;
 
@@ -57,7 +57,7 @@ public class Contacts extends RecyclerView.Adapter<Contacts.ContactViewHolder> {
             super(itemView);
             imageViewAvatar = itemView.findViewById(R.id.imageViewAvatar);
             textViewName = itemView.findViewById(R.id.textViewName);
-            textViewChatCount = itemView.findViewById(R.id.textViewChatCount);
+            //textViewChatCount = itemView.findViewById(R.id.textViewChatCount);
             textViewTime = itemView.findViewById(R.id.textViewTime);
             textViewUnreadCount = itemView.findViewById(R.id.textViewUnreadCount);
 
@@ -73,7 +73,7 @@ public class Contacts extends RecyclerView.Adapter<Contacts.ContactViewHolder> {
             if (contact == null) return;
 
             textViewName.setText(contact.getUsername());
-            textViewChatCount.setText(String.format(Locale.getDefault(), "%d chats", contact.getTotalChatCount()));
+            //textViewChatCount.setText(String.format(Locale.getDefault(), "%d chats", contact.getTotalChatCount()));
 
             if (contact.getLastMessageTime() != null) {
                 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());

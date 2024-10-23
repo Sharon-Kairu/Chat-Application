@@ -41,13 +41,14 @@ dependencies {
     implementation(libs.firebase.auth.v2150)
     implementation(libs.firebase.ui.auth)
     implementation(libs.firebase.firestore)
-
+    implementation(libs.firebase.storage)
     // Added RecyclerView
     implementation(libs.recyclerview)
 
     // Added Glide for image loading
     implementation(libs.glide)
     implementation(libs.swiperefreshlayout)
+    implementation(libs.firebase.storage)
     annotationProcessor(libs.compiler)
 
     // Added CircleImageView for round profile pictures

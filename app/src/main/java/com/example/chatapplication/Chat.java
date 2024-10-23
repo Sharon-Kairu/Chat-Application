@@ -9,9 +9,26 @@ public class Chat {
     private Date createdAt;
     private Date lastMessageTime;
     private String lastMessage;
+    private String userId;
+    private boolean hasUnsentMessages;
 
     // Default constructor for Firestore
     public Chat() {}
+
+    public Chat(String userId, String lastMessage, boolean hasUnsentMessages) {
+        this.userId = userId;
+        this.lastMessage = lastMessage;
+        this.hasUnsentMessages = hasUnsentMessages;
+    }
+
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     // Getters and setters
     public String getChatId() {
@@ -52,5 +69,13 @@ public class Chat {
 
     public void setLastMessage(String lastMessage) {
         this.lastMessage = lastMessage;
+    }
+
+    public boolean isHasUnsentMessages() {
+        return hasUnsentMessages;
+    }
+
+    public void setHasUnsentMessages(boolean hasUnsentMessages) {
+        this.hasUnsentMessages = hasUnsentMessages;
     }
 }
